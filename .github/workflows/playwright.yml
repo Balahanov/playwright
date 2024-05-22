@@ -47,7 +47,7 @@ jobs:
     - uses: actions/configure-pages@v1
     - uses: actions/upload-pages-artifact@v1
       with:
-        path: playwright-report/index.html
+        path: playwright-report/
     - id: deployment
       uses: actions/deploy-pages@v1
     # - name: Setup Pages
