@@ -31,10 +31,8 @@ jobs:
     - name: Setup Pages
       uses: actions/configure-pages@v2
     - name: Upload artifact
-      uses: actions/upload-pages-artifact@v4
+      uses: actions/upload-artifact@v3.1.0
+      if: always()
       with:
-          # Upload entire repository
+        name: playwright-report
         path: playwright-report/
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
