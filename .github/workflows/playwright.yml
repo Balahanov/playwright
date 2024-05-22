@@ -43,7 +43,7 @@ jobs:
     - uses: actions/download-artifact@v4
       with:
         name: page
-        path: .
+        path: playwright-report
     - uses: actions/configure-pages@v1
     - uses: actions/upload-pages-artifact@v1
       with:
