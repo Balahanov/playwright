@@ -34,7 +34,7 @@ jobs:
         retention-days: 30
   deploy:
     runs-on: ubuntu-latest
-    needs: build
+    needs: test
     environment:
       name: github-pages
       url: ${{steps.deployment.outputs.page_url}}
