@@ -30,9 +30,21 @@ jobs:
         retention-days: 30
     - name: Setup Pages
       uses: actions/configure-pages@v2
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3.1.0
-      if: always()
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    environment:
+      name: github-pages
+      url: ${{steps.deployment.outputs.page_url}}
+      
+    steps:
+    - uses: actions/download-artifact@master
       with:
         name: playwright-report
         path: playwright-report/
+    - uses: actions/configure-pages@v1
+    - uses: actions/upload-pages-artifact@v1
+      with:
+        path: playwright-report/
+    - id: deployment
+      uses: actions/deploy-pages@main
