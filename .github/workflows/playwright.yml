@@ -34,7 +34,7 @@ jobs:
         retention-days: 30
     - name: Setup Pages
       uses: actions/configure-pages@v2
-    - uses: actions/upload-pages-artifact@v1
+    - uses: actions/upload-pages-artifact@v4
       with:
         path: playwright-report/
     - id: deployment
