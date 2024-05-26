@@ -1,9 +1,9 @@
 name: Playwright Tests
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main ]
 permissions:
   contents: read
   pages: write
@@ -34,6 +34,8 @@ jobs:
   
   deploy:
     name: Report publication
+    # to prevent running job after creating pull request
+    if: github.ref_name == 'main'
     runs-on: ubuntu-latest
     needs: test
     environment:
