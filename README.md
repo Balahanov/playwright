@@ -20,7 +20,6 @@ Tests runs with 'chrome' by default. Also you can provide one of them by editing
   <summary>Available desktop devices:</summary>
 
 > Desktop Chrome HiDPI, Desktop Edge HiDPI, Desktop Firefox HiDPI, Desktop Safari, Desktop Chrome, Desktop Edge, Desktop Firefox
-
 </details>
 
 <details>
