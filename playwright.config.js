@@ -23,14 +23,12 @@ const dotenv = require('dotenv');
   const safari = { name: browser, use: { ...devices['Desktop Safari'] }, };
   const edge = { name: browser, use: { ...devices['Desktop Edge'] }, };
 
-  console.log(Object.keys(devices).toLocaleString())
   if (browser == 'chrome') config.push(chrome);
   else if (browser == 'firefox') config.push(firefox);
   else if (browser == 'safari') config.push(safari);
   else if (browser == 'edge') config.push(edge);
   else if (browser == 'all') config.push([chrome, firefox, safari]);
   else config.push({ name: browser, use: { ...devices[browser] }, });
-  console.log(config)
   return config;
 }
 /**
@@ -51,44 +49,7 @@ module.exports = defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: prepareEnvConfig(),
   /* Configure projects for major browsers */
-  projects: prepareDeviceConfig(process.env.DEVICE)
-  // [
-  //   {
-  //     name: 'chromium',
-  //     use: { ...devices['Desktop Chrome'] },
-  //   },
-
-  // {
-  //   name: 'firefox',
-  //   use: { ...devices['Desktop Firefox'] },
-  // },
-
-  // {
-  //   name: 'webkit',
-  //   use: { ...devices['Desktop Safari'] },
-  // },
-
-  /* Test against mobile viewports. */
-  // {
-  //   name: 'Mobile Chrome',
-  //   use: { ...devices['Pixel 5'] },
-  // },
-  // {
-  //   name: 'Mobile Safari',
-  //   use: { ...devices['iPhone 12'] },
-  // },
-
-  /* Test against branded browsers. */
-  // {
-  //   name: 'Microsoft Edge',
-  //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-  // },
-  // {
-  //   name: 'Google Chrome',
-  //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-  // },
-  // ],
-
+  projects: prepareDeviceConfig(process.env.DEVICE),
   /* Run your local dev server before starting the tests */
   // webServer: {
   //   command: 'npm run start',
