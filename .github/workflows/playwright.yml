@@ -34,9 +34,7 @@ jobs:
   
   deploy:
     name: Report publication
-    on:
-      push:
-        branches: [ main, master ]
+    if: github.ref_name == 'main'
     runs-on: ubuntu-latest
     needs: test
     environment:
