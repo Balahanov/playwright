@@ -14,10 +14,18 @@ Tests runs with 'chrome' by default. Also you can provide one of them by editing
 | Safari | safari |
 | Microsoft edge | edge |
 | All desctop browsers | all |
-##### Available desktop devices:
-> Desktop Chrome HiDPI, Desktop Edge HiDPI, Desktop Firefox HiDPI, Desktop Safari, Desktop Chrome, Desktop Edge, Desktop Firefox
 
-##### Available Apple devices
+<details>
+
+  <summary>Available desktop devices:</summary>
+
+> Desktop Chrome HiDPI, Desktop Edge HiDPI, Desktop Firefox HiDPI, Desktop Safari, Desktop Chrome, Desktop Edge, Desktop Firefox
+</details>
+
+<details>
+
+  <summary>Available Apple devices:</summary>
+
 > iPad (gen 5), iPad (gen 5) landscape, iPad (gen 6), iPad (gen 6) landscape, iPad (gen 7), iPad (gen 7) landscape, iPad Mini, iPad Mini landscape, iPad Pro 11, iPad Pro 11 landscape
 
 > iPhone 6, iPhone 6 landscape, iPhone 6 Plus, iPhone 6 Plus landscape
@@ -37,8 +45,12 @@ Tests runs with 'chrome' by default. Also you can provide one of them by editing
 > iPhone 13, iPhone 13 landscape, iPhone 13 Pro, iPhone 13 Pro landscape, iPhone 13 Pro Max, iPhone 13 Pro Max landscape, iPhone 13 Mini, iPhone 13 Mini landscape
 
 > iPhone 14, iPhone 14 landscape, iPhone 14 Plus, iPhone 14 Plus landscape, iPhone 14 Pro, iPhone 14 Pro landscape, iPhone 14 Pro Max, iPhone 14 Pro Max landscape
+</details>
 
-##### Available Android devices
+<details>
+
+  <summary>Available Android devices:</summary>
+
 > Blackberry PlayBook, Blackberry PlayBook landscape, BlackBerry Z30, BlackBerry Z30 landscape
 
 > Galaxy Note 3, Galaxy Note 3 landscape, Galaxy Note II, Galaxy Note II landscape, Galaxy S III, Galaxy S III landscape, Galaxy S5, Galaxy S5 landscape, Galaxy S8,Galaxy S8 landscape, Galaxy S9+, Galaxy S9+ landscape, Galaxy Tab S4, Galaxy Tab S4 landscape
@@ -56,3 +68,4 @@ Tests runs with 'chrome' by default. Also you can provide one of them by editing
 > Pixel 2, Pixel 2 landscape, Pixel 2 XL, Pixel 2 XL landscape, Pixel 3, Pixel 3 landscape, Pixel 4, Pixel 4 landscape, Pixel 4a (5G), Pixel 4a (5G) landscape, Pixel 5, Pixel 5 landscape, Pixel 7, Pixel 7 landscape
 
 > Moto G4, Moto G4 landscape
+</details>
