@@ -33,6 +33,9 @@ jobs:
         retention-days: 30
   
   deploy:
+    on:
+    push:
+      branches: [ main, master ]
     name: Report publication
     runs-on: ubuntu-latest
     needs: test
