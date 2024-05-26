@@ -3,12 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:ui": "npx playwright test --ui",
+    "test:headles": "npx playwright test",
+    "test:prod": "set ENV=prod BROWSER=chrome&& npx playwright test"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.44.0",
     "@types/node": "^20.12.12"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
   }
 }

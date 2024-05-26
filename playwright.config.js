@@ -1,12 +1,38 @@
-// @ts-check
-const { defineConfig, devices } = require('@playwright/test');
+const { defineConfig, devices } = require('@playwright/test')
+const dotenv = require('dotenv');
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// require('dotenv').config();
 
+ function prepareEnvConfig() {
+  // common configuration
+  let config = {
+    trace: 'on-first-retry'
+  };
+  // prevent rewriting env var if it was set in terminal
+  if (!process.env.ENV) dotenv.config();
+  console.log('\x1b[33mCurrent enviroment is - ' + '\x1b[32m"' + process.env.ENV + '"\x1b[0m');
+  // set configuration depend on env
+  if (process.env.ENV == 'dev') config.baseURL = 'http://the-internet.herokuapp.com';
+  else if (process.env.ENV == 'prod') config.baseURL = 'http://prod.the-internet.herokuapp.com';
+  return config;
+}
+
+ function prepareDeviceConfig(browser = 'chrome') {
+  let config = [];
+  const chrome = { name: browser, use: { ...devices['Desktop Chrome'] }, };
+  const firefox = { name: browser, use: { ...devices['Desktop Firefox'] }, };
+  const safari = { name: browser, use: { ...devices['Desktop Safari'] }, };
+  const edge = { name: browser, use: { ...devices['Desktop Edge'] }, };
+
+  console.log(Object.keys(devices).toLocaleString())
+  if (browser == 'chrome') config.push(chrome);
+  else if (browser == 'firefox') config.push(firefox);
+  else if (browser == 'safari') config.push(safari);
+  else if (browser == 'edge') config.push(edge);
+  else if (browser == 'all') config.push([chrome, firefox, safari]);
+  else config.push({ name: browser, use: { ...devices[browser] }, });
+  console.log(config)
+  return config;
+}
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
@@ -23,50 +49,45 @@ module.exports = defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  use: {
-    baseURL: 'http://the-internet.herokuapp.com/',
-
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
-  },
-
+  use: prepareEnvConfig(),
   /* Configure projects for major browsers */
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
+  projects: prepareDeviceConfig(process.env.DEVICE)
+  // [
+  //   {
+  //     name: 'chromium',
+  //     use: { ...devices['Desktop Chrome'] },
+  //   },
 
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+  // {
+  //   name: 'firefox',
+  //   use: { ...devices['Desktop Firefox'] },
+  // },
 
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
+  // {
+  //   name: 'webkit',
+  //   use: { ...devices['Desktop Safari'] },
+  // },
 
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
+  /* Test against mobile viewports. */
+  // {
+  //   name: 'Mobile Chrome',
+  //   use: { ...devices['Pixel 5'] },
+  // },
+  // {
+  //   name: 'Mobile Safari',
+  //   use: { ...devices['iPhone 12'] },
+  // },
 
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
-  ],
+  /* Test against branded browsers. */
+  // {
+  //   name: 'Microsoft Edge',
+  //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
+  // },
+  // {
+  //   name: 'Google Chrome',
+  //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+  // },
+  // ],
 
   /* Run your local dev server before starting the tests */
   // webServer: {
